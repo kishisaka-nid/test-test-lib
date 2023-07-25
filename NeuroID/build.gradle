@@ -17,11 +17,9 @@ def getGitHash = { ->
     }
     return stdout.toString().trim()
 }
-ext {
-    versionName = "\"${versionProps['VERSION_MAJOR']}.${versionProps['VERSION_MINOR']}.${versionProps['VERSION_PATCH']}\""
-}
-group = 'com.neuroid'
-version = versionName
+
+group = 'test.test'
+version = "1.1.2"
 
 android {
 
@@ -107,9 +105,9 @@ afterEvaluate {
                 from components.androidLibRelease
 
                 // You can then customize attributes of the publication as shown below.
-                groupId = 'com.neuroid'
+                groupId = 'test.test'
                 artifactId = 'android-sdk'
-                version = versionName
+                version = '1.1.2'
                 artifact androidSourcesJar
             }
             // Creates a Maven publication called “debug”.
@@ -117,9 +115,9 @@ afterEvaluate {
                 // Applies the component for the debug build variant.
                 from components.androidLibDebug
 
-                groupId = 'com.neuroid'
+                groupId = 'test.test'
                 artifactId = 'android-sdk-debug'
-                version = versionName
+                version = '1.1.2'
                 artifact androidSourcesJar
             }
             reactNativeLibRelease(MavenPublication) {
@@ -127,9 +125,9 @@ afterEvaluate {
                 from components.reactNativeLibRelease
 
                 // You can then customize attributes of the publication as shown below.
-                groupId = 'com.neuroid'
+                groupId = 'test.test'
                 artifactId = 'react-android-sdk'
-                version = versionName
+                version = '1.1.2'
                 artifact androidSourcesJar
             }
             // Creates a Maven publication called “debug”.
@@ -137,9 +135,9 @@ afterEvaluate {
                 // Applies the component for the debug build variant.
                 from components.reactNativeLibDebug
 
-                groupId = 'com.neuroid'
+                groupId = 'test.test'
                 artifactId = 'react-android-sdk-debug'
-                version = versionName
+                version = '1.1.2'
                 artifact androidSourcesJar
             }
         }

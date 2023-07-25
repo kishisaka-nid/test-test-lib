@@ -18,7 +18,7 @@ android {
 
     defaultConfig {
         applicationId "com.sample.neuroid.us"
-        minSdk 16
+        minSdk 21
         targetSdk 31
         multiDexEnabled true
         versionCode 1
@@ -97,6 +97,7 @@ dependencies {
     implementation 'androidx.multidex:multidex:2.0.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     testImplementation 'junit:junit:4.+'
+    testImplementation project(path: ':app')
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation "androidx.test:core-ktx:1.4.0"
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
