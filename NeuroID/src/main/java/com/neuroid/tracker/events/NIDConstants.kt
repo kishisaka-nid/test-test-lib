@@ -1,5 +1,6 @@
 package com.neuroid.tracker.events
 
+// test this
 const val CREATE_SESSION = "CREATE_SESSION"
 const val CLOSE_SESSION = "CLOSE_SESSION"
 const val SET_USER_ID = "SET_USER_ID"
