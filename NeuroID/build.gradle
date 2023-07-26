@@ -19,15 +19,15 @@ def getGitHash = { ->
 }
 
 group = 'test.test'
-version = "1.1.3"
+version = "1.1.4"
 
 android {
 
-    compileSdkVersion 33
+    compileSdkVersion 31
 
     defaultConfig {
         minSdk 21
-        targetSdk 33
+        targetSdk 31
         multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -107,7 +107,7 @@ afterEvaluate {
                 // You can then customize attributes of the publication as shown below.
                 groupId = 'test.test'
                 artifactId = 'android-sdk'
-                version = '1.1.3'
+                version = '1.1.4'
                 artifact androidSourcesJar
             }
             // Creates a Maven publication called “debug”.
@@ -117,7 +117,7 @@ afterEvaluate {
 
                 groupId = 'test.test'
                 artifactId = 'android-sdk-debug'
-                version = '1.1.3'
+                version = '1.1.4'
                 artifact androidSourcesJar
             }
             reactNativeLibRelease(MavenPublication) {
@@ -127,7 +127,7 @@ afterEvaluate {
                 // You can then customize attributes of the publication as shown below.
                 groupId = 'test.test'
                 artifactId = 'react-android-sdk'
-                version = '1.1.3'
+                version = '1.1.4'
                 artifact androidSourcesJar
             }
             // Creates a Maven publication called “debug”.
@@ -137,7 +137,7 @@ afterEvaluate {
 
                 groupId = 'test.test'
                 artifactId = 'react-android-sdk-debug'
-                version = '1.1.3'
+                version = '1.1.4'
                 artifact androidSourcesJar
             }
         }
