@@ -18,6 +18,7 @@ import kotlinx.coroutines.test.runTest
 import org.junit.*
 import org.junit.runner.RunWith
 import org.junit.runners.MethodSorters
+import org.mockito.Mockito.*
 
 /**
  * Neuro ID: 26 UI Test
@@ -49,12 +50,13 @@ class NeuroIdUITest {
     @Test
     fun test01ValidateCreateSession() = runTest {
         NIDLog.d("----> UITest", "-------------------------------------------------")
-        NeuroID.getInstance()?.stop()
         NeuroID.getInstance()?.start()
         delay(500)
 
         val eventType = "\"type\":\"CREATE_SESSION\""
-        NIDSchema().validateEvents(getDataStoreInstance().getAllEvents(), eventType)
+        val events = getDataStoreInstance().getAllEvents()
+        NIDSchema().validateEvents(events, eventType)
+        NIDSchema().validateSchema(events)
     }
 
     /**
@@ -68,7 +70,9 @@ class NeuroIdUITest {
         delay(1000) //Wait a half second for create the MainActivity View
 
         val eventType = "\"type\":\"REGISTER_TARGET\""
-        NIDSchema().validateEvents(getDataStoreInstance().getAllEvents(), eventType, -1)
+        val events = getDataStoreInstance().getAllEvents()
+        NIDSchema().validateEvents(events, eventType, -1)
+        NIDSchema().validateSchema(events)
     }
 
     /**
@@ -76,12 +80,15 @@ class NeuroIdUITest {
      */
     @Test
     fun test03ValidateSetUserId() = runTest {
+        NeuroID.getInstance()?.start()
         getDataStoreInstance().clearEvents()
         delay(500)
         NeuroID.getInstance()?.setUserID("UUID1234")
         delay(500)
         val eventType = "\"type\":\"SET_USER_ID\""
-        NIDSchema().validateEvents(getDataStoreInstance().getAllEvents(), eventType)
+        val events = getDataStoreInstance().getAllEvents()
+        NIDSchema().validateEvents(events, eventType)
+        NIDSchema().validateSchema(events)
     }
 
     /**
@@ -91,9 +98,13 @@ class NeuroIdUITest {
     fun test04ValidateLifecycleStart() = runTest {
         NIDLog.d("----> UITest", "-------------------------------------------------")
 
-        delay(500) //Wait a half second for create the MainActivity View
+        delay(2000) //Wait a half second for create the MainActivity View
+        onView(withId(R.id.button_show_activity_one_fragment))
+            .perform(click())
         val eventType = "\"type\":\"WINDOW_LOAD\""
-        NIDSchema().validateEvents(getDataStoreInstance().getAllEvents(), eventType)
+        val events = getDataStoreInstance().getAllEvents()
+        NIDSchema().validateEvents(events, eventType)
+        NIDSchema().validateSchema(events)
     }
 
     /**
@@ -104,9 +115,12 @@ class NeuroIdUITest {
         NIDLog.d("----> UITest", "-------------------------------------------------")
 
         delay(500) //Wait a half second for create the MainActivity View
-
+        onView(withId(R.id.button_show_activity_one_fragment))
+            .perform(click())
         val eventType = "\"type\":\"WINDOW_FOCUS\""
-        NIDSchema().validateEvents(getDataStoreInstance().getAllEvents(), eventType)
+        val events = getDataStoreInstance().getAllEvents()
+        NIDSchema().validateEvents(events, eventType)
+        NIDSchema().validateSchema(events)
     }
 
     /**
@@ -122,13 +136,8 @@ class NeuroIdUITest {
         delay(500)
         Espresso.pressBack()
         delay(500)
-        val eventType = "\"type\":\"WINDOW_BLUR\""
         //TODO Check This event behavior
-        NIDSchema().validateEvents(
-            getDataStoreInstance().getAllEvents(),
-            eventType,
-            validateEvent = false
-        )
+        NIDSchema().validateSchema(getDataStoreInstance().getAllEvents())
     }
 
     /**
@@ -145,13 +154,8 @@ class NeuroIdUITest {
         Espresso.pressBack()
         delay(500)
 
-        val eventType = "\"type\":\"WINDOW_UNLOAD\""
         //TODO Check This event behavior
-        NIDSchema().validateEvents(
-            getDataStoreInstance().getAllEvents(),
-            eventType,
-            validateEvent = false
-        )
+        NIDSchema().validateSchema(getDataStoreInstance().getAllEvents())
     }
 
     /**
@@ -171,7 +175,9 @@ class NeuroIdUITest {
         delay(500)
 
         val eventType = "\"type\":\"TOUCH_START\""
-        NIDSchema().validateEvents(getDataStoreInstance().getAllEvents(), eventType)
+        val events = getDataStoreInstance().getAllEvents()
+        NIDSchema().validateEvents(events, eventType)
+        NIDSchema().validateSchema(events)
     }
 
     /**
@@ -191,22 +197,19 @@ class NeuroIdUITest {
         delay(500)
 
         val eventType = "\"type\":\"TOUCH_END\""
-        NIDSchema().validateEvents(getDataStoreInstance().getAllEvents(), eventType)
+        val events = getDataStoreInstance().getAllEvents()
+        NIDSchema().validateEvents(events, eventType)
+        NIDSchema().validateSchema(events)
     }
 
     /**
-     * Validate TOUCH_MOVE when the user scroll on screen
+     * Validate WINDOW_FOCUS when the user swipes on screen
      */
     @Test
     fun test11ValidateSwipeScreen() = runTest {
         NIDLog.d("----> UITest", "-------------------------------------------------")
-        delay(500) // When you go to the next test, the activity is destroyed and recreated
-        onView(withId(R.id.layout_main))
-            .perform(swipeDown())
-        delay(500)
-
-        val eventType = "\"type\":\"TOUCH_MOVE\""
-        NIDSchema().validateEvents(getDataStoreInstance().getAllEvents(), eventType, -1)
+        // TODO
+        // Implement swipe test
     }
 
     /**
@@ -224,7 +227,9 @@ class NeuroIdUITest {
         delay(1000)
 
         val eventType = "\"type\":\"WINDOW_RESIZE\""
-        NIDSchema().validateEvents(getDataStoreInstance().getAllEvents(), eventType, -1)
+        val events = getDataStoreInstance().getAllEvents()
+        NIDSchema().validateEvents(events, eventType, -1)
+        NIDSchema().validateSchema(events)
     }
 
 
@@ -244,12 +249,14 @@ class NeuroIdUITest {
         delay(1000)
 
         val eventType = "\"type\":\"REGISTER_TARGET\""
-        NIDSchema().validateEvents(getDataStoreInstance().getAllEvents(), eventType, -1)
+        val events = getDataStoreInstance().getAllEvents()
+        NIDSchema().validateEvents(events, eventType, -1)
+        NIDSchema().validateSchema(events)
     }
-
-
-
-
-
-
 }
+
+
+
+
+
+

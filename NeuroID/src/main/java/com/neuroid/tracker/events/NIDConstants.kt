@@ -1,6 +1,7 @@
 package com.neuroid.tracker.events
 
 const val CREATE_SESSION = "CREATE_SESSION"
+const val MOBILE_METADATA_ANDROID = "MOBILE_METADATA_ANDROID"
 const val CLOSE_SESSION = "CLOSE_SESSION"
 const val SET_USER_ID = "SET_USER_ID"
 const val HEARTBEAT = "HEARTBEAT"
@@ -53,5 +54,6 @@ const val DEVICE_MOTION = "DEVICE_MOTION"
 const val SWITCH_CHANGE = "SWITCH_CHANGE"
 const val TOGGLE_BUTTON_CHANGE = "TOGGLE_BUTTON_CHANGE"
 const val RATING_BAR_CHANGE = "RATING_BAR_CHANGE"
+const val CONTEXT_MENU = "CONTEXT_MENU"
 
 const val ANDROID_URI ="android://"
