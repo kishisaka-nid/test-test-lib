@@ -122,26 +122,26 @@ afterEvaluate {
                 version = versionName
                 artifact androidSourcesJar
             }
-            reactNativeLibRelease(MavenPublication) {
-                // Applies the component for the release build variant.
-                from components.reactNativeLibRelease
-
-                // You can then customize attributes of the publication as shown below.
-                groupId = 'test.test'
-                artifactId = 'react-android-sdk'
-                version = versionName
-                artifact androidSourcesJar
-            }
-            // Creates a Maven publication called “debug”.
-            reactNativeLibDebug(MavenPublication) {
-                // Applies the component for the debug build variant.
-                from components.reactNativeLibDebug
-
-                groupId = 'test.test'
-                artifactId = 'react-android-sdk-debug'
-                version = versionName
-                artifact androidSourcesJar
-            }
+//            reactNativeLibRelease(MavenPublication) {
+//                // Applies the component for the release build variant.
+//                from components.reactNativeLibRelease
+//
+//                // You can then customize attributes of the publication as shown below.
+//                groupId = 'test.test'
+//                artifactId = 'react-android-sdk'
+//                version = versionName
+//                artifact androidSourcesJar
+//            }
+//            // Creates a Maven publication called “debug”.
+//            reactNativeLibDebug(MavenPublication) {
+//                // Applies the component for the debug build variant.
+//                from components.reactNativeLibDebug
+//
+//                groupId = 'test.test'
+//                artifactId = 'react-android-sdk-debug'
+//                version = versionName
+//                artifact androidSourcesJar
+//            }
         }
     }
 }
