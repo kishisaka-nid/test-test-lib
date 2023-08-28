@@ -18,9 +18,9 @@ def getGitHash = { ->
     return stdout.toString().trim()
 }
 ext {
-    versionName = "\"${versionProps['VERSION_MAJOR']}.${versionProps['VERSION_MINOR']}.${versionProps['VERSION_PATCH']}\""
+    versionName = "${versionProps['VERSION_MAJOR']}.${versionProps['VERSION_MINOR']}.${versionProps['VERSION_PATCH']}"
 }
-group = 'com.neuroid'
+group = 'test.test'
 version = versionName
 
 android {
@@ -107,7 +107,7 @@ afterEvaluate {
                 from components.androidLibRelease
 
                 // You can then customize attributes of the publication as shown below.
-                groupId = 'com.neuroid'
+                groupId = 'test.test'
                 artifactId = 'android-sdk'
                 version = versionName
                 artifact androidSourcesJar
@@ -117,7 +117,7 @@ afterEvaluate {
                 // Applies the component for the debug build variant.
                 from components.androidLibDebug
 
-                groupId = 'com.neuroid'
+                groupId = 'test.test'
                 artifactId = 'android-sdk-debug'
                 version = versionName
                 artifact androidSourcesJar
@@ -127,7 +127,7 @@ afterEvaluate {
                 from components.reactNativeLibRelease
 
                 // You can then customize attributes of the publication as shown below.
-                groupId = 'com.neuroid'
+                groupId = 'test.test'
                 artifactId = 'react-android-sdk'
                 version = versionName
                 artifact androidSourcesJar
@@ -137,7 +137,7 @@ afterEvaluate {
                 // Applies the component for the debug build variant.
                 from components.reactNativeLibDebug
 
-                groupId = 'com.neuroid'
+                groupId = 'test.test'
                 artifactId = 'react-android-sdk-debug'
                 version = versionName
                 artifact androidSourcesJar
