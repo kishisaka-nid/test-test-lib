@@ -27,7 +27,7 @@ android {
 
     defaultConfig {
         applicationId "com.sample.neuroid.us"
-        minSdk 31
+        minSdk 28
         targetSdk 31
         multiDexEnabled true
         versionCode 1
@@ -64,8 +64,9 @@ android {
         release {
             minifyEnabled false
             shrinkResources = false
-            // proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            //signingConfig signingConfigs.release   //Remove comment only when running locally and. DO NOT upload changes without commenting these lines again
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.debug
+            // signingConfig signingConfigs.release   //Remove comment only when running locally and. DO NOT upload changes without commenting these lines again
         }
     }
 
