@@ -16,9 +16,18 @@ android {
 
     compileSdkVersion 31
 
+    packagingOptions {
+        pickFirst 'lib/armeabi-v7a/libfbjni.so'
+        pickFirst 'lib/armeabi-v7a/libc++_shared.so'
+        pickFirst 'lib/x86/libc++_shared.so'
+        pickFirst 'lib/x86/libfbjni.so'
+        pickFirst 'lib/x86_64/libc++_shared.so'
+        pickFirst 'lib/x86_64/libfbjni.so'
+    }
+
     defaultConfig {
         applicationId "com.sample.neuroid.us"
-        minSdk 16
+        minSdk 31
         targetSdk 31
         multiDexEnabled true
         versionCode 1
@@ -53,9 +62,9 @@ android {
             minifyEnabled false
         }
         release {
-            minifyEnabled true
-            shrinkResources = true
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            minifyEnabled false
+            shrinkResources = false
+            // proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             //signingConfig signingConfigs.release   //Remove comment only when running locally and. DO NOT upload changes without commenting these lines again
         }
     }
